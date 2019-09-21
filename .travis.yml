@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t parmanbabra/react-test -f ./client/dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true parmanbabra/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t parmanbabra/multi-client ./client
+  - docker build -t parmanbabra/multi-nginx ./nginx
+  - docker build -t parmanbabra/multi-server ./server
+  - docker build -t parmanbabra/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push to docker hub
+  - docker push parmanbabra/multi-client
+  - docker push parmanbabra/multi-nginx
+  - docker push parmanbabra/multi-server
+  - docker push parmanbabra/multi-worker
