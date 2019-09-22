@@ -14,13 +14,6 @@
             "hostname": "api",
             "essentail": false,
             "memory": 64
-        },
-        {
-            "name": "worker",
-            "image": "parmanbabra/multi-worker",
-            "hostname": "worker",
-            "essentail": false,
-            "memory": 64
         }
     ]
 }
