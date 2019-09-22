@@ -28,7 +28,7 @@
             ],
             "links": [
                 "client",
-                "api"
+                "server"
             ],
             "memory": 64
         }
