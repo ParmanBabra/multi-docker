@@ -6,7 +6,21 @@
             "image": "parmanbabra/multi-client",
             "hostname": "client",
             "essentail": false,
-            "memory": 128
+            "memory": 64
+        },
+        {
+            "name": "server",
+            "image": "parmanbabra/multi-server",
+            "hostname": "api",
+            "essentail": false,
+            "memory": 64
+        },
+        {
+            "name": "worker",
+            "image": "parmanbabra/multi-worker",
+            "hostname": "worker",
+            "essentail": false,
+            "memory": 64
         }
     ]
 }
