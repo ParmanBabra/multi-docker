@@ -1,0 +1,39 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "parmanbabra/multi-client",
+            "hostname": "client",
+            "essentail": false
+        },
+        {
+            "name": "server",
+            "image": "parmanbabra/multi-server",
+            "hostname": "api",
+            "essentail": false
+        },
+        {
+            "name": "worker",
+            "image": "parmanbabra/multi-worker",
+            "hostname": "worker",
+            "essentail": false
+        },
+        {
+            "name": "nginx",
+            "image": "parmanbabra/multi-nginx",
+            "hostname": "nginx",
+            "essentail": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "client",
+                "server"
+            ]
+        }
+    ]
+}
